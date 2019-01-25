@@ -39,14 +39,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("InitGame");
         someoneWon = false;
 
-        while (someoneWon)
-        {
-            CurrentPlayer = 1;
-            TakeTurn();
-            CurrentPlayer = 2;
-            TakeTurn();
+        // while (!someoneWon)
+        // {
+        //     CurrentPlayer = 1;
+        //     TakeTurn();
+        //     CurrentPlayer = 2;
+        //     TakeTurn();
 
-        }
+        // }
     }
 
 
