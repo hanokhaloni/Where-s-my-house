@@ -4,24 +4,18 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
                                                             // private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
 
-
     bool someoneWon = false;
-int CurrentPlayer  = 0;
+    int CurrentPlayer = 0;
 
-    //Awake is always called before any Start functions
-    void Awake()
+      void Awake()
     {
-        //Check if instance already exists
         if (instance == null)
         {
-            //if not, set instance to this
             instance = this;
         }
-        //If instance already exists and it's not this:
         else if (instance != this)
         {
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
@@ -42,7 +36,8 @@ int CurrentPlayer  = 0;
     {
         //Call the SetupScene function of the BoardManager script, pass it current level number.
         // boardScript.SetupScene(level);
-someoneWon = false;
+        Debug.Log("InitGame");
+        someoneWon = false;
 
         while (someoneWon)
         {
@@ -52,7 +47,6 @@ someoneWon = false;
             TakeTurn();
 
         }
-
     }
 
 
@@ -63,19 +57,25 @@ someoneWon = false;
 
     }
 
-
-
     public void TakeTurn()
     {
-
         //(onClick events) can either:
         //click on tile -> go to tile + show card (stop watch while card is being displayed, but add time after card watched)
         //click on house -> if it's your house you won, HOWEVER if it'snot - u lose your turn or the game pending thorough A/B testing.
+        Debug.Log("CurrentPlayer:" + CurrentPlayer + " TakeTurn");
     }
 
-    public void ClickTile() 
+    public void ClickTile()
     {
         //Show card
         //If card is
+        Debug.Log("CurrentPlayer:" + CurrentPlayer + " ClickTile");
+    }
+
+    public void ClickHouse()
+    {
+        //Show card
+        //If card is
+        Debug.Log("CurrentPlayer:" + CurrentPlayer + " ClickHouse");
     }
 }
