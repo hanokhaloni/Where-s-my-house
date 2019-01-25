@@ -29,25 +29,25 @@ public class MoveToPointInPath : MonoBehaviour
     private void CheckNode() {
         Timer = 0;
         CurrentPosition = nodes[currentNode].transform.position;
+        Debug.Log("currentNode:"+currentNode + " position:"+CurrentPosition);
     }
     // Update is called once per frame
     void Update()
     {
         Timer += Time.deltaTime * moveSpeed;
 
-        if (Player.transform.position != CurrentPosition) {
+        if (Player.transform.position != CurrentPosition) 
+        {
             Player.transform.position = Vector3.Lerp(Player.transform.position, CurrentPosition, Timer);
-        } else {
-            if (currentNode == nodes.Length)
+        }
+        else 
+        {
+            currentNode ++;          
+            if (currentNode >= nodes.Length)
             {
                 currentNode = 0;
-                CheckNode();
-            }
-            if (currentNode < nodes.Length - 1)
-            {
-                currentNode ++;
-                CheckNode();
-            }
+            }  
+            CheckNode();
         }
     }
 }
