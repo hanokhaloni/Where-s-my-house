@@ -23,6 +23,7 @@ public class MoveToPointInPath : MonoBehaviour
     {
         currentNode = 0;
         nodes = Path.GetComponentsInChildren<Node>();
+        CheckNode();
     }
 
     private void CheckNode() {
@@ -37,7 +38,12 @@ public class MoveToPointInPath : MonoBehaviour
         if (Player.transform.position != CurrentPosition) {
             Player.transform.position = Vector3.Lerp(Player.transform.position, CurrentPosition, Timer);
         } else {
-            if (currentNode < nodes.Length)
+            if (currentNode == nodes.Length)
+            {
+                currentNode = 0;
+                CheckNode();
+            }
+            if (currentNode < nodes.Length - 1)
             {
                 currentNode ++;
                 CheckNode();
