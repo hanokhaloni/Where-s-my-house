@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,17 @@ public class GameManager : MonoBehaviour
 
     public string Name;
     public string color;
+
+    internal void WinGame()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void GameOver()
+    {
+        Debug.Log("GameManager GAME OVER!");
+    }
+
     public float moveSpeed = 0.4f;
     
     public GameObject Path;
@@ -87,7 +99,7 @@ public class GameManager : MonoBehaviour
             else 
             {
                 if (shouldShowCard == true) {
-                    CardSpawnManager.instance.ShowCard();    
+                    CardSpawnManager.instance.ShowCard(targetNodeIndex);    
                     shouldShowCard = false;
                 }
              
