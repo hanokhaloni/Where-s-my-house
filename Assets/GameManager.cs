@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,16 +15,7 @@ public class GameManager : MonoBehaviour
     public string Name;
     public string color;
 
-    internal void WinGame()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void GameOver()
-    {
-        Debug.Log("GameManager GAME OVER!");
-    }
-
+   
     public float moveSpeed = 0.4f;
     
     public GameObject Path;
@@ -36,6 +28,21 @@ public class GameManager : MonoBehaviour
 
     float Timer;
     Vector3 CurrentPosition;
+
+    public GameObject gameOverPanel;
+    public Text gameOverText;
+
+     internal void WinGame()
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void GameOver()
+    {
+        Debug.Log("GameManager GAME OVER!");
+        gameOverPanel.SetActive(true);
+    }
+
 
     void Awake()
     {

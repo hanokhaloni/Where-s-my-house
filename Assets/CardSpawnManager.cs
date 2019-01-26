@@ -12,6 +12,7 @@ public class CardSpawnManager : MonoBehaviour
     
     public Transform OpenCardTransform;
     public Transform Origin;
+    
 
     bool isShown=false;
 
