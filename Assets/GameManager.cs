@@ -4,13 +4,27 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
-                                                            // private BoardManager boardScript;                       //Store a reference to our BoardManager which will set up the level.
-
+    public static GameManager instance = null; 
     bool someoneWon = false;
     int CurrentPlayer = 0;
 
-      void Awake()
+
+    public string Name;
+    public string color;
+    public float moveSpeed = 0.4f;
+    
+    public GameObject Path;
+    public GameObject Player;
+
+    Node[] nodes;
+
+    int currentNodeIndex;
+    public int targetNodeIndex;
+
+    float Timer;
+    Vector3 CurrentPosition;
+
+    void Awake()
     {
         if (instance == null)
         {
@@ -38,23 +52,55 @@ public class GameManager : MonoBehaviour
         // boardScript.SetupScene(level);
         Debug.Log("InitGame");
         someoneWon = false;
-
-        // while (!someoneWon)
-        // {
-        //     CurrentPlayer = 1;
-        //     TakeTurn();
-        //     CurrentPlayer = 2;
-        //     TakeTurn();
-
-        // }
     }
 
 
 
-    //Update is called every frame.
+    
+    void setTargetIndex(int targetNodeIndex) 
+    {
+        this.targetNodeIndex = targetNodeIndex;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        currentNodeIndex = 0;
+        nodes = Path.GetComponentsInChildren<Node>();
+        CheckNode();
+    }
+
+    private void CheckNode() {
+        Timer = 0;
+        CurrentPosition = nodes[currentNodeIndex].transform.position;
+        Debug.Log("currentNode:"+currentNodeIndex + " position:"+CurrentPosition);
+    }
+    // Update is called once per frame
     void Update()
     {
+        Timer += Time.deltaTime * moveSpeed;
 
+        if (Player.transform.position != CurrentPosition) 
+        {
+            Player.transform.position = Vector3.Lerp(Player.transform.position, CurrentPosition, Timer);
+        }
+        else 
+        {
+            if (targetNodeIndex != currentNodeIndex)
+            {
+                currentNodeIndex++;          
+                if (currentNodeIndex >= nodes.Length)
+                {
+                    currentNodeIndex = 0;
+                }  
+                CheckNode();
+            }
+           
+        }
+    }
+
+    public void ShowCard() {
+        Debug.Log("Showing card");
     }
 
     public void TakeTurn()
@@ -65,12 +111,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("CurrentPlayer:" + CurrentPlayer + " TakeTurn");
     }
 
-    public void ClickTile()
-    {
-        //Show card
-        //If card is
-        Debug.Log("CurrentPlayer:" + CurrentPlayer + " ClickTile");
-    }
 
     public void ClickHouse()
     {
