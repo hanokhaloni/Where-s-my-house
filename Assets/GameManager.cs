@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour
     float Timer;
     Vector3 CurrentPosition;
 
+
     public GameObject gameOverPanel;
     public Text gameOverText;
 
+    public GameObject winPanel;
      internal void WinGame()
     {
-        throw new NotImplementedException();
+        winPanel.SetActive(true);
     }
 
     internal void GameOver()

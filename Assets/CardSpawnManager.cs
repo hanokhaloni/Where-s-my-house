@@ -12,7 +12,7 @@ public class CardSpawnManager : MonoBehaviour
     
     public Transform OpenCardTransform;
     public Transform Origin;
-    
+
 
     bool isShown=false;
 
@@ -49,22 +49,22 @@ public class CardSpawnManager : MonoBehaviour
     {
         switch (id)
         {
-            case 1: return "green";
-            case 2: return "black";
-            case 3: return "top";
-            case 4: return "road";
-            case 5: return "c++";
-            case 6: return "go away";
-            case 7: return "ndnd";
-            case 8: return "LRRR!";
+            case 1: return "no grass";
+            case 2: return "!black";
+            case 3: return "cross";
+            case 4: return "white";
+            case 5: return "!high";
+            case 6: return "no orcs";
+            case 7: return "no blood";
+            case 8: return "white roof";
             case 9: return "4 walls";
             case 10: return "chimnee";
             case 11: return "a duck";
-            case 12: return "lame";
+            case 12: return "one wall is white";
             case 13: return "extra turn!";
             case 14: return "bugs";
-            case 15: return "orcs";
-            default: return "NONE!";
+            case 15: return "A duck";
+            default: return "GUESS!";
         }
     }
 
