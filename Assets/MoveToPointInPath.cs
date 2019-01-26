@@ -13,23 +13,30 @@ public class MoveToPointInPath : MonoBehaviour
 
     Node[] nodes;
 
-    int currentNode;
+    int currentNodeIndex;
+    public int targetNodeIndex;
 
     float Timer;
     Vector3 CurrentPosition;
 
+    
+    void setTargetIndex(int targetNodeIndex) 
+    {
+        this.targetNodeIndex = targetNodeIndex;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        currentNode = 0;
+        currentNodeIndex = 0;
         nodes = Path.GetComponentsInChildren<Node>();
         CheckNode();
     }
 
     private void CheckNode() {
         Timer = 0;
-        CurrentPosition = nodes[currentNode].transform.position;
-        Debug.Log("currentNode:"+currentNode + " position:"+CurrentPosition);
+        CurrentPosition = nodes[currentNodeIndex].transform.position;
+        Debug.Log("currentNode:"+currentNodeIndex + " position:"+CurrentPosition);
     }
     // Update is called once per frame
     void Update()
@@ -42,12 +49,15 @@ public class MoveToPointInPath : MonoBehaviour
         }
         else 
         {
-            currentNode ++;          
-            if (currentNode >= nodes.Length)
+            if (targetNodeIndex != currentNodeIndex)
             {
-                currentNode = 0;
-            }  
-            CheckNode();
+                currentNodeIndex++;          
+                if (currentNodeIndex >= nodes.Length)
+                {
+                    currentNodeIndex = 0;
+                }  
+                CheckNode();
+            }
         }
     }
 }
