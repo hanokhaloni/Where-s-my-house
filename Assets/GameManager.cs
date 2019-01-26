@@ -40,6 +40,42 @@ public class GameManager : MonoBehaviour
     internal void GameOver()
     {
         Debug.Log("GameManager GAME OVER!");
+        string text;
+        switch (targetNodeIndex) {
+            case 1 : text = "You didn't even try!";
+            break;
+            case 2:text = "Come on! it was the yellow one!";
+            break;
+            case 3:text = "Now you are dead.";
+            break;
+            case 4:text = "Wrong House...";
+            break;
+            case 5:text = "House is wrong!";
+            break;
+            case 6:text = "HAHA! You lost!";
+            break;
+            case 7:text = "Winn...nah, you lost!";
+            break;
+            case 8:text = ":(";
+            break;
+            case 9:text = "Nothing to see here, move along";
+            break;
+            case 10:text = "You stop that!";
+            break;
+            case 11:text = "GRRRRR!";
+            break;
+            case 12:text = "This is SPARTAAAA!";
+            break;
+            case 13:text = "Godmode = false";
+            break;
+            case 14:text = "No!";
+            break;
+            case 15:text = "Use cheat code next time!";
+            break;
+            default:text = "Game Over!";
+            break;
+        }
+        gameOverText.text = text;
         gameOverPanel.SetActive(true);
     }
 
