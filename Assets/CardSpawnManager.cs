@@ -33,7 +33,7 @@ public class CardSpawnManager : MonoBehaviour
 
     void ShowCard()
     {
-        
+        Card.
     }
 
     void HideCard()

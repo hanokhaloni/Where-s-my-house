@@ -17,14 +17,5 @@ public class ClickableStep : MonoBehaviour
         GameManager.instance.targetNodeIndex = id;
     }
 
-    // void Update()
-    // {
-    //     Timer += Time.deltaTime * speed;
 
-    //     if (playTransform) {
-    //         transform.position = Vector3.Lerp(Player.transform.position, CurrentPosition, Timer);
-    //     }
-
-
-    // }
 }
