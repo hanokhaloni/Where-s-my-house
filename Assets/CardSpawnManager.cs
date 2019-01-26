@@ -33,11 +33,12 @@ public class CardSpawnManager : MonoBehaviour
 
     void ShowCard()
     {
-        Card.
+        //Play animation
     }
 
     void HideCard()
     {
+        //Play animation backwards
 
     }
 
