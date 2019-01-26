@@ -31,15 +31,16 @@ public class CardSpawnManager : MonoBehaviour
         //Call the InitGame function to initialize the first level 
     }
 
-    void ShowCard()
+    public void ShowCard()
     {
         //Play animation
+        Card.gameObject.SetActive(true);
     }
 
-    void HideCard()
+    public void HideCard()
     {
         //Play animation backwards
-
+        Card.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

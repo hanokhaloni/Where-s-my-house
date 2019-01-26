@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     bool someoneWon = false;
     int CurrentPlayer = 0;
 
+    public bool shouldShowCard = false;
 
     public string Name;
     public string color;
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     Node[] nodes;
 
     int currentNodeIndex;
-    public int targetNodeIndex;
+    int targetNodeIndex ;
 
     float Timer;
     Vector3 CurrentPosition;
@@ -32,34 +33,22 @@ public class GameManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            //           Destroy(gameObject);
+
         }
-        //Sets this to not be destroyed when reloading scene
-        //     DontDestroyOnLoad(gameObject);
 
-        //Get a component reference to the attached BoardManager script
-        //   boardScript = GetComponent<BoardManager>();
-
-        //Call the InitGame function to initialize the first level 
         InitGame();
     }
 
-    //Initializes the game for each level.
     void InitGame()
     {
-        //Call the SetupScene function of the BoardManager script, pass it current level number.
-        // boardScript.SetupScene(level);
         Debug.Log("InitGame");
         someoneWon = false;
     }
-
-
-
     
-    void setTargetIndex(int targetNodeIndex) 
+    public void SetTargetIndex(int targetNodeIndex) 
     {
         this.targetNodeIndex = targetNodeIndex;
+        shouldShowCard = true;
     }
 
     // Start is called before the first frame update
@@ -95,8 +84,17 @@ public class GameManager : MonoBehaviour
                 }  
                 CheckNode();
             }
+            else 
+            {
+                if (shouldShowCard == true) {
+                    CardSpawnManager.instance.ShowCard();    
+                    shouldShowCard = false;
+                }
+             
+            }
            
         }
+        
     }
 
     public void ShowCard() {

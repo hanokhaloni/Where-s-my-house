@@ -14,7 +14,7 @@ public class ClickableStep : MonoBehaviour
      void OnMouseDown()
     {
         Debug.Log("Clicked"+id);
-        GameManager.instance.targetNodeIndex = id;
+        GameManager.instance.SetTargetIndex(id);
     }
 
 
